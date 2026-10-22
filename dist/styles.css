@@ -310,7 +310,7 @@ main {
 
 .directory-section {
   width: min(100% - 80px, 880px);
-  margin: 23px auto 64px;
+  margin: 23px auto 40px;
 }
 
 .search-shell {
@@ -329,6 +329,7 @@ main {
   background: #fff;
   color: #676767;
   font-size: 13px;
+  z-index: 1;
 }
 
 .search-icon {
@@ -353,6 +354,111 @@ main {
   background: #777;
   transform: rotate(45deg);
   transform-origin: center;
+}
+
+.directory-search {
+  width: 100%;
+  height: 100%;
+  padding: 0 18px 0 52px;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 17px;
+  outline: 0;
+}
+
+.search-shell:focus-within {
+  border-color: #169d93;
+  box-shadow: 0 0 0 3px rgba(67, 197, 186, 0.18);
+}
+
+.directory-status {
+  min-height: 20px;
+  margin: 12px 2px 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.directory-list {
+  overflow: hidden;
+  border: 1px solid #d6d6d8;
+  border-radius: 8px;
+}
+
+.directory-row {
+  border-bottom: 1px solid #d6d6d8;
+  background: #fff;
+}
+
+.directory-row:last-child {
+  border-bottom: 0;
+}
+
+.directory-row summary {
+  min-height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 15px 21px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.directory-row summary::-webkit-details-marker {
+  display: none;
+}
+
+.directory-row summary:hover {
+  background: #fafafa;
+}
+
+.directory-row summary:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid var(--teal);
+  outline-offset: -3px;
+}
+
+.directory-row[open] summary {
+  color: var(--indigo);
+}
+
+.directory-row[open] .chevron {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+
+.directory-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 21px 17px;
+}
+
+.directory-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 27px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e9f7f5;
+  color: #176d68;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.directory-empty {
+  margin: 0;
+  padding: 38px 20px;
+  border: 1px solid #d6d6d8;
+  border-radius: 8px;
+  color: var(--muted);
+  text-align: center;
 }
 
 .map-section {
@@ -534,6 +640,16 @@ main {
 
   .directory-section {
     margin-top: 28px;
+  }
+
+  .directory-row summary {
+    min-height: 75px;
+    padding: 17px 20px;
+    font-size: 17px;
+  }
+
+  .directory-tags {
+    padding: 0 20px 18px;
   }
 
   .map-section {

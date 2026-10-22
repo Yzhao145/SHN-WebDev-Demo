@@ -20,14 +20,68 @@
       </header>
       <main>
         <section class="page-hero"><h1>Directories</h1></section>
-        <section class="directory-section" aria-label="Hospital directory placeholder">
-          <div class="search-shell" aria-label="Find Hospital Unit or Department">
-            <span class="search-label">Find Hospital Unit/Department</span>
+        <section class="directory-section" aria-labelledby="directory-search-label">
+          <div class="search-shell">
+            <label class="search-label" id="directory-search-label" for="directory-search">Find Hospital Unit/Department</label>
             <span class="search-icon" aria-hidden="true"></span>
+            <input id="directory-search" class="directory-search" type="search" autocomplete="off" spellcheck="false" aria-describedby="directory-status" />
           </div>
+          <p class="directory-status" id="directory-status" role="status" aria-live="polite">Showing all 37 locations</p>
+
+          <div class="directory-list" id="directory-list">
+            <details class="directory-row" data-tags="Emergency&amp;Critical Care"><summary>Emergency Department (ED)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Emergency&amp;Critical Care</span></div></details>
+            <details class="directory-row" data-tags="Emergency&amp;Critical Care"><summary>Intensive Care Unit (ICU)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Emergency&amp;Critical Care</span></div></details>
+
+            <details class="directory-row" data-tags="Clinics&amp;Surgery"><summary>Same Day Surgery<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Clinics&amp;Surgery</span></div></details>
+            <details class="directory-row" data-tags="Clinics&amp;Surgery"><summary>Surgical Specialty Clinic<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Clinics&amp;Surgery</span></div></details>
+            <details class="directory-row" data-tags="Clinics&amp;Surgery"><summary>Kids Care Short Stay Clinic<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Clinics&amp;Surgery</span></div></details>
+            <details class="directory-row" data-tags="Clinics&amp;Surgery"><summary>Fracture/Medicine Clinic<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Clinics&amp;Surgery</span></div></details>
+
+            <details class="directory-row" data-tags="Diagnostics&amp;Testing"><summary>Laboratory<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Diagnostics&amp;Testing</span></div></details>
+            <details class="directory-row" data-tags="Diagnostics&amp;Testing"><summary>Diagnostic Imaging<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Diagnostics&amp;Testing</span></div></details>
+            <details class="directory-row" data-tags="Diagnostics&amp;Testing"><summary>Cardiac Diagnostics<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Diagnostics&amp;Testing</span></div></details>
+            <details class="directory-row" data-tags="Diagnostics&amp;Testing"><summary>EEG &amp; EMG Clinic<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Diagnostics&amp;Testing</span></div></details>
+
+            <details class="directory-row" data-tags="Patient_Services&amp;Administration"><summary>Patient Registration<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Patient_Services&amp;Administration</span></div></details>
+            <details class="directory-row" data-tags="Patient_Services&amp;Administration"><summary>Pre-Admissions<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Patient_Services&amp;Administration</span></div></details>
+            <details class="directory-row" data-tags="Patient_Services&amp;Administration"><summary>Information<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Patient_Services&amp;Administration</span></div></details>
+            <details class="directory-row" data-tags="Patient_Services&amp;Administration"><summary>SHN Foundation Office<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Patient_Services&amp;Administration</span></div></details>
+
+            <details class="directory-row" data-tags="Amenities&amp;Support"><summary>Pharmacy<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Amenities&amp;Support</span></div></details>
+            <details class="directory-row" data-tags="Amenities&amp;Support"><summary>Waiting Area<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Amenities&amp;Support</span></div></details>
+            <details class="directory-row" data-tags="Amenities&amp;Support"><summary>Gift Shop<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Amenities&amp;Support</span></div></details>
+            <details class="directory-row" data-tags="Amenities&amp;Support"><summary>Food/Dining<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Amenities&amp;Support</span></div></details>
+            <details class="directory-row" data-tags="Amenities&amp;Support"><summary>Worship Room<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Amenities&amp;Support</span></div></details>
+            <details class="directory-row" data-tags="Amenities&amp;Support"><summary>Spiritual &amp; Religious Care<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Amenities&amp;Support</span></div></details>
+
+            <details class="directory-row" data-tags="Hygiene_Facilities"><summary>Standard Washroom (near Emergency)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Hygiene_Facilities</span></div></details>
+            <details class="directory-row" data-tags="Hygiene_Facilities|Accessibility"><summary>Men's Accessible Washroom (near Kids Care)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Hygiene_Facilities</span><span>Accessibility</span></div></details>
+            <details class="directory-row" data-tags="Hygiene_Facilities|Accessibility"><summary>Women's Accessible Washroom (near Kids Care)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Hygiene_Facilities</span><span>Accessibility</span></div></details>
+            <details class="directory-row" data-tags="Hygiene_Facilities|Accessibility"><summary>Men's Accessible Washroom (near SHN Foundation)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Hygiene_Facilities</span><span>Accessibility</span></div></details>
+            <details class="directory-row" data-tags="Hygiene_Facilities|Accessibility"><summary>Women's Accessible Washroom (near SHN Foundation)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Hygiene_Facilities</span><span>Accessibility</span></div></details>
+
+            <details class="directory-row" data-tags="Entrances"><summary>East Entrance<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Entrances</span></div></details>
+            <details class="directory-row" data-tags="Entrances|Parking"><summary>North Entrance<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Entrances</span><span>Parking</span></div></details>
+            <details class="directory-row" data-tags="Entrances|Emergency&amp;Critical Care"><summary>Emergency Entrance<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Entrances</span><span>Emergency&amp;Critical Care</span></div></details>
+
+            <details class="directory-row" data-tags="Parking"><summary>Staff Parking<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Parking</span></div></details>
+            <details class="directory-row" data-tags="Parking"><summary>Parking Area (right side)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Parking</span></div></details>
+            <details class="directory-row" data-tags="Parking"><summary>Paid Parking (green P symbol)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Parking</span></div></details>
+            <details class="directory-row" data-tags="Parking"><summary>Parking Office<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Parking</span></div></details>
+            <details class="directory-row" data-tags="Parking"><summary>Parking Payment Station<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Parking</span></div></details>
+
+            <details class="directory-row" data-tags="Security"><summary>Security (near Emergency Entrance)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Security</span></div></details>
+
+            <details class="directory-row" data-tags="Accessibility"><summary>Staircase (near ICU)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Accessibility</span></div></details>
+            <details class="directory-row" data-tags="Accessibility"><summary>Staircase (near Waiting Area)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Accessibility</span></div></details>
+            <details class="directory-row" data-tags="Accessibility"><summary>Elevator (near Waiting Area)<span class="chevron" aria-hidden="true"></span></summary><div class="directory-tags"><span>Accessibility</span></div></details>
+          </div>
+
+          <p class="directory-empty" id="directory-empty" hidden>No locations match that search term.</p>
         </section>
       </main>
       <footer class="site-footer"><p>© 2026 SHN WayFinder. Developed by <strong>Volunteer Services WayFinding Team and contributors.</strong></p></footer>
     </div>
+    <script src="directory.js"></script>
   </body>
 </html>
