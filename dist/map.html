@@ -21,10 +21,25 @@
       <main>
         <section class="page-hero"><h1>Map</h1></section>
         <section class="map-section" aria-label="Birchmount Hospital map">
-          <img src="assets/birchmount-map.png" alt="Birchmount Hospital main floor map showing departments, entrances, parking, and amenities" />
+          <div class="map-viewport" id="map-viewport" tabindex="0" aria-label="Interactive Birchmount Hospital map. Zoom in, then drag or use the arrow keys to move around the map.">
+            <div class="map-canvas" id="map-canvas">
+              <img src="assets/birchmount-map.png" draggable="false" alt="Birchmount Hospital main floor map showing departments, entrances, parking, and amenities" />
+            </div>
+            <div class="map-controls" aria-label="Map zoom controls">
+              <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+              <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+            </div>
+            <p class="map-hint">Zoom in, then drag to move around the map</p>
+            <span class="map-zoom-status" id="map-zoom-status" aria-live="polite">100% zoom</span>
+          </div>
+          <a class="download-map-button" href="assets/birchmount-map.png" download="SHN-Birchmount-Hospital-Map.png">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3ZM5 19h14v2H5v-2Z"/></svg>
+            Download Map
+          </a>
         </section>
       </main>
       <footer class="site-footer"><p>© 2026 SHN WayFinder. Developed by <strong>Volunteer Services WayFinding Team and contributors.</strong></p></footer>
     </div>
+    <script src="map.js"></script>
   </body>
 </html>

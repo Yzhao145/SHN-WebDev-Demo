@@ -462,14 +462,163 @@ main {
 }
 
 .map-section {
-  width: min(100% - 28px, 1650px);
-  margin: 0 auto;
-  padding: 0 0 36px;
+  width: min(100% - 40px, 1050px);
+  margin: 36px auto 0;
+  padding: 0 0 40px;
 }
 
-.map-section img {
-  width: 100%;
+.map-viewport {
+  position: relative;
+  height: clamp(420px, 48vw, 630px);
+  overflow: hidden;
+  border: 1px solid #d7d8dc;
+  border-radius: 10px;
+  background: #f7f9fb;
+  box-shadow: 0 5px 16px rgba(20, 30, 80, 0.12);
+  touch-action: none;
+  user-select: none;
+}
+
+.map-viewport:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 4px;
+}
+
+.map-viewport.is-zoomed {
+  cursor: grab;
+}
+
+.map-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.map-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 92%;
+  height: 92%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  transition: transform 140ms ease-out;
+  will-change: transform;
+}
+
+.map-viewport.is-dragging .map-canvas {
+  transition: none;
+}
+
+.map-canvas img {
+  width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: none;
+}
+
+.map-controls {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  overflow: hidden;
+  border: 1px solid #c8cad1;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.map-controls button {
+  width: 46px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  color: var(--indigo);
+  font: inherit;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.map-controls button + button {
+  border-top: 1px solid #d7d8dc;
+}
+
+.map-controls button:hover:not(:disabled) {
+  background: #eef4fb;
+}
+
+.map-controls button:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid var(--teal);
+  outline-offset: -3px;
+}
+
+.map-controls button:disabled {
+  color: #b2b4ba;
+  cursor: not-allowed;
+}
+
+.map-hint {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  bottom: 16px;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--muted);
+  font-size: 13px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-zoom-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.download-map-button {
+  width: min(100%, 300px);
+  min-height: 52px;
+  margin: 26px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 5px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.download-map-button svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+}
+
+.download-map-button:hover {
+  background: #084f99;
+  transform: translateY(-1px);
+}
+
+.download-map-button:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 4px;
 }
 
 .site-footer {
@@ -653,12 +802,29 @@ main {
   }
 
   .map-section {
-    width: 100%;
-    overflow-x: auto;
+    width: calc(100% - 32px);
+    margin-top: 24px;
   }
 
-  .map-section img {
-    min-width: 850px;
+  .map-viewport {
+    height: 470px;
+  }
+
+  .map-canvas {
+    width: 96%;
+    height: 96%;
+  }
+
+  .map-controls {
+    top: 12px;
+    right: 12px;
+  }
+
+  .map-hint {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    text-align: center;
   }
 
   .site-footer {
