@@ -1,3 +1,10 @@
+/**
+ * Search vocabulary grouped by directory tag.
+ *
+ * Each value is a comma-separated list of terms that visitors might type. A
+ * successful term match selects the tag, and every location carrying that tag
+ * becomes visible. Template strings keep these long lists readable in source.
+ */
 const tagVocabulary = {
   "Emergency&Critical Care": `
     Emergency, Emergency Services, Urgent Medical Attention, Emergency Medicine,
@@ -124,11 +131,20 @@ const tagVocabulary = {
   `
 };
 
+/**
+ * Convert search terms to a comparable form.
+ *
+ * Lowercasing makes matching case-insensitive, while removing every whitespace
+ * character means entries such as "car park" and "CarPark" are equivalent.
+ */
 const normalizeTerm = (value) => value.toLocaleLowerCase().replace(/\s+/g, "");
 
+// Build a reverse lookup of normalized search term -> matching tag(s). A Set is
+// used because terms such as "Exit" can legitimately belong to multiple tags.
 const termIndex = new Map();
 
 Object.entries(tagVocabulary).forEach(([tag, vocabulary]) => {
+  // Include the tag name itself as a valid search term in addition to its words.
   const terms = [tag, ...vocabulary.split(",")];
 
   terms.forEach((term) => {
@@ -140,11 +156,19 @@ Object.entries(tagVocabulary).forEach(([tag, vocabulary]) => {
   });
 });
 
+// Cache the search field, status messages, and all collapsible directory rows.
 const searchInput = document.querySelector("#directory-search");
 const directoryRows = [...document.querySelectorAll(".directory-row")];
 const status = document.querySelector("#directory-status");
 const emptyState = document.querySelector("#directory-empty");
 
+/**
+ * Filter the directory in response to the current search value.
+ *
+ * An empty query displays every row. Otherwise, the query must exactly match a
+ * normalized vocabulary term. A row remains visible when at least one of its
+ * data-tags values belongs to the query's matched tag set.
+ */
 const updateDirectory = () => {
   const query = normalizeTerm(searchInput.value.trim());
   const matchingTags = query ? termIndex.get(query) : null;
@@ -155,12 +179,17 @@ const updateDirectory = () => {
     const isVisible = !query || Boolean(matchingTags && rowTags.some((tag) => matchingTags.has(tag)));
 
     row.hidden = !isVisible;
+
+    // Close filtered-out rows so stale expanded content does not remain open
+    // when the user later changes or clears the search.
     if (!isVisible) row.open = false;
     if (isVisible) visibleCount += 1;
   });
 
+  // Swap between the results list and its empty-state message.
   emptyState.hidden = visibleCount !== 0;
 
+  // Keep the live status understandable for sighted and screen-reader users.
   if (!query) {
     status.textContent = `Showing all ${directoryRows.length} locations`;
   } else if (visibleCount === 0) {
@@ -170,4 +199,5 @@ const updateDirectory = () => {
   }
 };
 
+// Filtering runs immediately after every edit to the search field.
 searchInput.addEventListener("input", updateDirectory);
